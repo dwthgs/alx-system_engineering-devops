@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-### Displays own PID
-pgrep -n
+# A script that displays it's own pid.
+
+echo $$

@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# Script kills named process
-pgrep -f ./4-to_inf | xargs kill

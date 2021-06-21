@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# Kills named process
-pkill -f ./4-to_inf
