@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
-# Installs Nginx with the following configurations:
+# Configure Nginx
 
 apt update
 apt install -y nginx
 
-mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
 echo "Holberton School" > /etc/nginx/html/index.html
 touch /etc/nginx/html/404.html
 echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
@@ -17,7 +15,7 @@ printf %s "server {
     index  index.html index.htm;
 
     location /redirect_me {
-        return 301 http://cuberule.com/;
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
 
     error_page 404 /404.html;
