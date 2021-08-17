@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Configure Nginx
 
-apt update
-apt install -y nginx
+apt-get update
+apt-get install -y nginx
 
 echo "Holberton School" > /etc/nginx/html/index.html
 printf %s "server {
@@ -12,4 +12,4 @@ printf %s "server {
     }
 }" > /etc/nginx/sites-available/default
 
-service nginx restart
+service nginx start
