@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Transfers a file from local to remote
+apt install nginx -y
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+service nginx start
