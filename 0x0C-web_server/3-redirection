@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
-# Configure Nginx
+# Bash script that install ngnix and configure it
+# It configures to port 80
+# redirect to 301 moved permanently
+
+alx="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+new_str="server_name _;\n\trewrite ^/redirect_me/$ $alx permanent;"
 
 apt update
 apt install -y nginx
-
-echo "Holberton School" > /etc/nginx/html/index.html
-printf %s "server {
-    listen 80 default_server;
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-}" > /etc/nginx/sites-available/default
-
+ufw allow 'Nginx HTTP'
+echo "Holberton School" > /var/www/html/index.html
+sed -i "s|server_name _;|$new_str|" /etc/nginx/sites-available/default
 service nginx restart
