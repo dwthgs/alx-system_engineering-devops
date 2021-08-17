@@ -1,33 +1,20 @@
 #!/usr/bin/env bash
-# Bash script that install ngnix and configure it
-# It configures to port 80
-
-# It configures to rediret to 301 moved permanently
-# It configures to have a cutom 404 page 
-
+# Configure Nginx
 
 apt update
 apt install -y nginx
 
-echo "Holberton School" > /var/www/html/index.html
-touch /var/www/html/404.html
-echo "Ceci n'est pas une page" > /var/www/html/404.html
+echo "Holberton School" > /etc/nginx/html/index.html
+touch /etc/nginx/html/404.html
+echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
 
 printf %s "server {
-	listen 80;
-	listen [::]:80 default_server;
-	root /var/www/html;
-	index index.html index.htm;
+	listen 80 default_server;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
 
-	location /redirect_me {
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-	}
-
-	error_page 404 /404.html;
-	location /404 {
-		root /var/www/html;
-		internal;
-	}
+	error_page 404 /etc/nginx/html/404.html;
 }" > /etc/nginx/sites-available/default
 
 service nginx restart
